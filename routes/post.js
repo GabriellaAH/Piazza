@@ -88,7 +88,7 @@ router.get('/', authNext, async (req, res) => {
 });
 
 // Get a specific post by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
                                .populate('author', 'fullName')
