@@ -34,6 +34,15 @@ const PostSchema = new Schema({
   updatedAt: {
     type: Date,
     default: Date.now
+  },
+  validUntil: {
+    type: Date,
+    default: () => {
+        const now = new Date();
+        now.setDate(now.getDate() + 30);
+        return now;
+      },
+    require: true
   }
 });
 
